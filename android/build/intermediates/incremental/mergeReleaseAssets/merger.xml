@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/Theepika/projects/test/shareButtonAction/node_modules/fileShare/android/src/main/assets"/><source path="/Users/Theepika/projects/test/shareButtonAction/node_modules/fileShare/android/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/Users/Theepika/projects/test/shareButtonAction/node_modules/fileShare/android/src/release/assets"/></dataSet></merger>
