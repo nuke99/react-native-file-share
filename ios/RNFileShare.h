@@ -5,6 +5,10 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+// NSObject <RCTBridgeModule>
 @interface RNFileShare : NSObject <RCTBridgeModule>
 
 @end
