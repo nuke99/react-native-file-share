@@ -1,6 +1,10 @@
 
 # react-native-file-share
 
+
+![Gif](https://raw.githubusercontent.com/nuke99/react-native-file-share/master/anim.gif)
+
+
 ## Getting started
 
 `$ npm install react-native-file-share --save`
@@ -19,6 +23,10 @@
 3. In XCode, in the project navigator, select your project. Add `libRNFileShare.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
+**Note: Please add the necessary permissions to the info.plist**
+    - Privacy - Photo Library Additions Usage Description
+
+
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
@@ -34,20 +42,43 @@
       compile project(':react-native-file-share')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNFileShare.sln` in `node_modules/react-native-file-share/windows/RNFileShare.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using File.Share.RNFileShare;` to the usings at the top of the file
-  - Add `new RNFileSharePackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
 
 ## Usage
 ```javascript
-import RNFileShare from 'react-native-file-share';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  View,
+  Image,
+  Button
+} from 'react-native';
 
-// TODO: What to do with the module?
-RNFileShare;
+import RNFileShare from 'react-native-file-share'
+
+export default class App extends Component<{}> {
+
+  constructor() {
+    super();
+    this.state = {
+      images : [
+        '/full/path/to/img1.jpg',
+        '/full/path/to/img2.jpg'
+      ]
+    }
+  }
+
+  shareImages() {
+    RNFileShare.shareFiles(this.state.images);
+  }
+  
+  render() {
+    return (
+      <View style={styles.container}>
+       <Button onPress={this.shareImages} title="Share Images" />
+      </View>
+    );
+  }
+}
+
 ```
   
