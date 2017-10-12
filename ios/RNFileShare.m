@@ -12,11 +12,6 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(shareFiles:(NSArray *)files) {
     
     
-//    UIImage *image = [UIImage imageWithContentsOfFile:files[0]];
-//    UIImage *imagea = [UIImage imageWithContentsOfFile:files[1]];
-//
-//    NSArray *items = @[image,imagea];
-    
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -28,13 +23,11 @@ RCT_EXPORT_METHOD(shareFiles:(NSArray *)files) {
         
     }
     
-    
-    
-    
     UIActivityViewController *shareView = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+    shareView.popoverPresentationController.sourceView = rootViewController.view;
     
     [shareView setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
-        
+        //If Completed
         if(completed) {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@""
                                                                            message:@"Successfully Shared. "
@@ -48,15 +41,6 @@ RCT_EXPORT_METHOD(shareFiles:(NSArray *)files) {
         }
         
     }];
-    
-    // exclude several items
-//    NSArray *excluded = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter];
-//    controller.excludedActivityTypes = excluded;
-    
-    // and present it
-    //[self presentActivityController:controller];
-    
-    
     
     
     [rootViewController presentViewController:shareView animated:YES completion:nil];
