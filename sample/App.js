@@ -14,7 +14,9 @@ import {
   Button
 } from 'react-native';
 
-import RNFileShare from 'react-native-file-share';
+import RNFileShare from 'react-native-file-share'
+const RNFS = require('react-native-fs');
+
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
@@ -29,24 +31,28 @@ export default class App extends Component<{}> {
     super();
     this.state = {
       images : [
-        './assets/img1.jpg',
-        './assets/img2.jpg'
+        '/Users/treasurepriyamal/projects/react-native/react-native-file-share/sample/assets/img1.jpg',
+        '/Users/treasurepriyamal/projects/react-native/react-native-file-share/sample/assets/img2.jpg'
       ]
     }
   }
 
-  shareImages() {
+  
 
+  shareImages() {
+    console.log(this)
+    // RNFileShare.shareFiles(this.state.images);
   }
 
 
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require('./assets/img1.jpg')} style={styles.image} />
-        <Image source={require('./assets/img2.jpg')} style={styles.image} />
 
-        <Button title="Share Images" />
+       <Image source={require('/Users/treasurepriyamal/projects/react-native/react-native-file-share/sample/assets/img2.jpg')} style={styles.image} /> 
+       <Image source={require('/Users/treasurepriyamal/projects/react-native/react-native-file-share/sample/assets/img1.jpg')} style={styles.image} />
+
+       <Button onPress={this.shareImages} title="Share Images" />
       </View>
     );
   }
